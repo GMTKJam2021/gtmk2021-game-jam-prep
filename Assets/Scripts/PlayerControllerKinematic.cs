@@ -78,8 +78,6 @@ public class PlayerControllerKinematic : MonoBehaviour
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0f);
             isJumping = false;
-            Debug.Log("hit");
-            Debug.Log(gravity);
         }
     }
 }
