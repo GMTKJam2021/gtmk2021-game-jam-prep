@@ -2138,12 +2138,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1218390864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b8ecd0385d891b40a406e51d98a945e, type: 3}
+  m_Script: {fileID: 11500000, guid: 443512c02ea227a4c818629c818d070b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  jumpHeight: 2
-  timeToJumpApex: 0.5
 --- !u!1 &1279091675
 GameObject:
   m_ObjectHideFlags: 0
