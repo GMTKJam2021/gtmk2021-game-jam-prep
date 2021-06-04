@@ -21,14 +21,12 @@ public class PlayerControllerCustom : MonoBehaviour
     string buttonPressed;
     bool isJumping;
 
-    // Start is called before the first frame update
     void Awake()
     {
         gravity = 2 * jumpHeight / (timeToJumpApex * timeToJumpApex);
         jumpVelocity = gravity * timeToJumpApex;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.RightArrow))
@@ -50,12 +48,10 @@ public class PlayerControllerCustom : MonoBehaviour
     {
         if (buttonPressed == RIGHT)
         {
-            // transform.position += transform.right * (Time.fixedDeltaTime * moveSpeed);
             transform.Translate(Vector2.right * (Time.fixedDeltaTime * moveSpeed), space);
         }
         else if (buttonPressed == LEFT)
         {
-            // transform.position -= transform.right * (Time.fixedDeltaTime * moveSpeed);
             transform.Translate(Vector2.left * (Time.fixedDeltaTime * moveSpeed), space);
         }
     }

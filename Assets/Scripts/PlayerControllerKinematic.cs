@@ -21,7 +21,6 @@ public class PlayerControllerKinematic : MonoBehaviour
     string buttonPressed;
     bool isJumping;
 
-    // Start is called before the first frame update
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -30,7 +29,6 @@ public class PlayerControllerKinematic : MonoBehaviour
         jumpVelocity = gravity * timeToJumpApex;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.RightArrow))
