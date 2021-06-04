@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerControllerCustom : MonoBehaviour
 {
     [SerializeField]
+    private Space space = Space.Self;
+    [SerializeField]
     private float moveSpeed = 3;
     [SerializeField]
     private float jumpHeight = 2f;
@@ -48,11 +50,13 @@ public class PlayerControllerCustom : MonoBehaviour
     {
         if (buttonPressed == RIGHT)
         {
-            transform.position += transform.right * (Time.fixedDeltaTime * moveSpeed);
+            // transform.position += transform.right * (Time.fixedDeltaTime * moveSpeed);
+            transform.Translate(Vector2.right * (Time.fixedDeltaTime * moveSpeed), space);
         }
         else if (buttonPressed == LEFT)
         {
-            transform.position -= transform.right * (Time.fixedDeltaTime * moveSpeed);
+            // transform.position -= transform.right * (Time.fixedDeltaTime * moveSpeed);
+            transform.Translate(Vector2.left * (Time.fixedDeltaTime * moveSpeed), space);
         }
     }
 
