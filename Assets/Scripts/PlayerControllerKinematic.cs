@@ -19,7 +19,7 @@ public class PlayerControllerKinematic : MonoBehaviour
     public const string LEFT = "left";
 
     string buttonPressed;
-    bool isJumping;
+    bool isJumping = true;
 
     void Awake()
     {
@@ -48,9 +48,6 @@ public class PlayerControllerKinematic : MonoBehaviour
         {
             isJumping = true;
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpVelocity);
-            Debug.Log("jump!");
-            Debug.Log(gravity);
-            Debug.Log(jumpVelocity);
         }
     }
 
@@ -58,20 +55,21 @@ public class PlayerControllerKinematic : MonoBehaviour
     {
         if (buttonPressed == RIGHT)
         {
-            // rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
-            rb2d.MovePosition(rb2d.position + new Vector2(moveSpeed, 0) * Time.fixedDeltaTime);
+            rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
         }
         else if (buttonPressed == LEFT)
         {
-            // rb2d.velocity = new Vector2(-moveSpeed, rb2d.velocity.y);
-            rb2d.MovePosition(rb2d.position + new Vector2(-moveSpeed, 0) * Time.fixedDeltaTime);
+            rb2d.velocity = new Vector2(-moveSpeed, rb2d.velocity.y);
         }
         else
         {
-            // rb2d.velocity = new Vector2(0f, rb2d.velocity.y);
+            rb2d.velocity = new Vector2(0f, rb2d.velocity.y);
         }
 
-        //rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y - (gravity * Time.fixedDeltaTime));
+        if (isJumping)
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y - (gravity * Time.fixedDeltaTime));
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -80,6 +78,8 @@ public class PlayerControllerKinematic : MonoBehaviour
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0f);
             isJumping = false;
+            Debug.Log("hit");
+            Debug.Log(gravity);
         }
     }
 }
