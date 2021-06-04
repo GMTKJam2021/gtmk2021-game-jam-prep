@@ -2006,10 +2006,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1218390868}
+  - component: {fileID: 1218390869}
   - component: {fileID: 1218390867}
   - component: {fileID: 1218390866}
   - component: {fileID: 1218390865}
-  - component: {fileID: 1218390869}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2051,7 +2051,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218390864}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2141,6 +2141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443512c02ea227a4c818629c818d070b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forceMode: 0
+  moveSpeed: 30
+  jumpHeight: 2
+  timeToJumpApex: 0.5
 --- !u!1 &1279091675
 GameObject:
   m_ObjectHideFlags: 0
