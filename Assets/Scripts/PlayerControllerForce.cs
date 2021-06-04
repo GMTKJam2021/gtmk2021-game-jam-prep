@@ -22,7 +22,6 @@ public class PlayerControllerForce : MonoBehaviour
     string buttonPressed;
     bool isJumping;
 
-    // Start is called before the first frame update
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -31,7 +30,6 @@ public class PlayerControllerForce : MonoBehaviour
         jumpVelocity = gravity * timeToJumpApex;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.RightArrow))
@@ -46,7 +44,12 @@ public class PlayerControllerForce : MonoBehaviour
         {
             buttonPressed = null;
         }
-        Debug.Log(buttonPressed);
+
+        if (Input.GetKeyDown(KeyCode.Space) && isJumping == false)
+        {
+            isJumping = true;
+            rb2d.AddForce(new Vector2(0f, jumpVelocity), ForceMode2D.Impulse);
+        }
     }
 
     private void FixedUpdate()

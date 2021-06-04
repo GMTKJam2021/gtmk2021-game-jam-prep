@@ -19,9 +19,8 @@ public class PlayerControllerKinematic : MonoBehaviour
     public const string LEFT = "left";
 
     string buttonPressed;
-    bool isJumping;
+    bool isJumping = true;
 
-    // Start is called before the first frame update
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -30,7 +29,6 @@ public class PlayerControllerKinematic : MonoBehaviour
         jumpVelocity = gravity * timeToJumpApex;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.RightArrow))
@@ -50,9 +48,6 @@ public class PlayerControllerKinematic : MonoBehaviour
         {
             isJumping = true;
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpVelocity);
-            Debug.Log("jump!");
-            Debug.Log(gravity);
-            Debug.Log(jumpVelocity);
         }
     }
 
@@ -60,20 +55,21 @@ public class PlayerControllerKinematic : MonoBehaviour
     {
         if (buttonPressed == RIGHT)
         {
-            // rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
-            rb2d.MovePosition(rb2d.position + new Vector2(moveSpeed, 0) * Time.fixedDeltaTime);
+            rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
         }
         else if (buttonPressed == LEFT)
         {
-            // rb2d.velocity = new Vector2(-moveSpeed, rb2d.velocity.y);
-            rb2d.MovePosition(rb2d.position + new Vector2(-moveSpeed, 0) * Time.fixedDeltaTime);
+            rb2d.velocity = new Vector2(-moveSpeed, rb2d.velocity.y);
         }
         else
         {
-            // rb2d.velocity = new Vector2(0f, rb2d.velocity.y);
+            rb2d.velocity = new Vector2(0f, rb2d.velocity.y);
         }
 
-        //rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y - (gravity * Time.fixedDeltaTime));
+        if (isJumping)
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y - (gravity * Time.fixedDeltaTime));
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
