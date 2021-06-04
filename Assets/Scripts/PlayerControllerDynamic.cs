@@ -42,6 +42,12 @@ public class PlayerControllerDynamic : MonoBehaviour
         {
             buttonPressed = null;
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) && isJumping == false)
+        {
+            isJumping = true;
+            rb2d.AddForce(new Vector2(0f, jumpVelocity), ForceMode2D.Impulse);
+        }
     }
 
     private void FixedUpdate()
